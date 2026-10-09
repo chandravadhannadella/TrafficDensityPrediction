@@ -463,10 +463,8 @@ Please review the relevant licenses and usage terms for third-party packages, pr
 
 ## 📄 License
 
-A project license should be added in a root-level `LICENSE` file before publishing this repository with an explicit open-source license.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for the complete license text.
 
-If you choose the MIT License, include the complete MIT license text in that file and ensure you have the rights to license your own code and any included materials. A project license does not automatically change the licensing terms of third-party models, datasets, or other dependencies.
-
----
+The license applies to the project materials that the repository owner has the right to license. Third-party libraries, pretrained model weights, datasets, and other external assets remain subject to their respective licenses and terms.
 
 **TrafficIQ — Exploring traffic density estimation through computer vision and machine learning.**
