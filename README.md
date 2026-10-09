@@ -1,470 +1,389 @@
-# 🚦 TrafficIQ — AI-Powered Traffic Density Prediction
+<div align="center">
+  <img src="https://github.com/chandravadhannadella/TrafficDensityPrediction/blob/main/Screenshots/trafficIQ-logo.png?raw=true" alt="TrafficIQ logo" width="112" />
 
-**TrafficIQ** is a computer-vision web application that estimates traffic density from road images and videos. It combines YOLOv8 vehicle detection, machine-learning classification, image and video processing, and an interactive Flask dashboard to analyze traffic conditions.
+  <h1>TrafficIQ</h1>
+  <h3>AI-Powered Traffic Density Prediction</h3>
 
-The application detects vehicles, extracts traffic-related features, predicts traffic density, and presents the results through annotated images, video analysis, vehicle counts, confidence scores, and time-based analytics.
+  <p>
+    <strong>Turn road images and videos into traffic insights.</strong><br />
+    A computer-vision prototype for vehicle detection, traffic-density estimation, and time-based video analysis.
+  </p>
 
-> **Research prototype:** Density labels are based on proxy labels derived from vehicle counts, not independently verified ground-truth traffic annotations. Predictions are experimental and should not be used for safety-critical or operational traffic-management decisions.
+  <p>
+    <a href="https://github.com/chandravadhannadella/TrafficDensityPrediction">
+      <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" alt="GitHub repository" />
+    </a>
+    <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
+    <img src="https://img.shields.io/badge/Flask-Web%20App-000000?style=for-the-badge&logo=flask" alt="Flask web app" />
+    <img src="https://img.shields.io/badge/Computer%20Vision-YOLOv8-7B61FF?style=for-the-badge" alt="YOLOv8 computer vision" />
+    <img src="https://img.shields.io/badge/License-MIT-2EA44F?style=for-the-badge" alt="MIT License" />
+  </p>
+
+  <p>
+    <a href="#-project-preview">Preview</a> •
+    <a href="#-features">Features</a> •
+    <a href="#-getting-started">Getting Started</a> •
+    <a href="#-api-reference">API</a> •
+    <a href="#-project-structure">Project Structure</a>
+  </p>
+</div>
+
+---
+
+> [!IMPORTANT]
+> **Research prototype:** Density labels are proxy labels derived from vehicle counts, not independently verified ground-truth traffic annotations. Predictions are experimental and must not be used for safety-critical or operational traffic-management decisions.
+
+## 🚦 Project Overview
+
+**TrafficIQ** is a Flask-based computer-vision application that estimates traffic density from road images and videos. It combines **YOLOv8n vehicle detection**, saved machine-learning classifiers, OpenCV-based media processing, and an interactive dashboard to present vehicle counts and traffic-density predictions.
+
+The application supports two separate inference workflows: a **V4-Image model** for image analysis and a **V3 pipeline** for video inference. Video analysis samples frames and aggregates features over time windows to show how estimated density changes throughout a clip.
+
+## 🖥️ Project Preview
+
+<div align="center">
+  <img src="Screenshots/Screenshot%202026-10-05%20201949.png" alt="TrafficIQ dashboard with image and video analysis options" width="100%" />
+  <em>TrafficIQ dashboard — choose image analysis or video analysis from one workspace.</em>
+</div>
 
 ## ✨ Features
 
-- **Image-based analysis:** Upload a road image and view vehicle detections, vehicle counts, predicted density, and confidence.
-- **Video-based analysis:** Process traffic videos and examine density predictions across time windows.
-- **Vehicle detection:** Detect supported vehicle classes, including cars, buses, trucks, motorcycles, and bicycles, using YOLOv8n.
-- **Vehicle tracking:** Track detections across sampled video frames to support temporal feature extraction.
-- **Separate prediction pipelines:** Use a dedicated V4-Image model for image inference and a V3 model for video inference.
-- **Traffic analytics:** Review per-window predictions, confidence scores, vehicle distributions, and traffic timelines.
-- **Annotated outputs:** Generate visual outputs that help users inspect detected vehicles and analysis results.
-- **Interactive dashboard:** Access image and video workflows through a Flask-based web interface.
-- **REST API:** Upload media, initiate inference, check processing status, and retrieve results programmatically.
-- **Automated tests:** Run the included tests to check API routes, detection, prediction, and video inference components.
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🖼️ Image Analysis</h3>
+      Upload a road image and view detected vehicles, vehicle counts, predicted density, confidence, and annotated output.
+    </td>
+    <td width="50%">
+      <h3>🎞️ Video Analysis</h3>
+      Analyze traffic across time windows and inspect density changes, per-window predictions, and video output.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🚗 Vehicle Detection</h3>
+      Use YOLOv8n to detect supported classes: cars, buses, trucks, motorcycles, and bicycles.
+    </td>
+    <td>
+      <h3>📈 Traffic Analytics</h3>
+      Review vehicle distributions, confidence scores, density timelines, and time-window summaries.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>🧭 Tracking & Features</h3>
+      Track detections across sampled video frames and aggregate temporal features for video inference.
+    </td>
+    <td>
+      <h3>🔌 REST API</h3>
+      Upload media, start processing, check job status, and retrieve results programmatically.
+    </td>
+  </tr>
+</table>
 
-## 🖥️ Application Screenshots
+## 🖼️ Application Gallery
 
-Place your screenshots in the existing `Screenshots/` folder. Use the filenames below or change the image paths to match your actual files.
+<div align="center">
+  <h3>Dashboard</h3>
+  <img src="Screenshots/Screenshot%202026-10-05%20201949.png" alt="TrafficIQ dashboard" width="100%" />
 
-### Dashboard
+  <h3>Analysis Workspace</h3>
+  <img src="Screenshots/Screenshot%202026-10-05%20202353.png" alt="TrafficIQ analysis workspace" width="100%" />
 
-![TrafficIQ dashboard](https://github.com/chandravadhannadella/TrafficDensityPrediction/blob/main/Screenshots/Screenshot%202026-10-05%20201949.png?raw=true)
+  <h3>Image Analysis Results</h3>
+  <img src="Screenshots/Screenshot%202026-10-05%20201806.png" alt="TrafficIQ image analysis with vehicle detections" width="100%" />
+  <img src="Screenshots/Screenshot%202026-10-05%20201824.png" alt="TrafficIQ image vehicle breakdown and summary" width="100%" />
 
-### Analysis Workspace
+  <h3>Video Analysis Results</h3>
+  <img src="Screenshots/Screenshot%202026-10-05%20201911.png" alt="TrafficIQ video analysis player" width="100%" />
+  <img src="Screenshots/Screenshot%202026-10-05%20201935.png" alt="TrafficIQ video analytics and timeline" width="100%" />
+</div>
 
-![TrafficIQ analysis workspace](https://github.com/chandravadhannadella/TrafficDensityPrediction/blob/main/Screenshots/Screenshot%202026-10-05%20202353.png?raw=true)
-
-### Image Analysis Results
-
-![TrafficIQ image analysis results](https://github.com/chandravadhannadella/TrafficDensityPrediction/blob/main/Screenshots/Screenshot%202026-10-05%20201806.png?raw=true)
-
-![TrafficIQ vehicle breakdown and summary](https://github.com/chandravadhannadella/TrafficDensityPrediction/blob/main/Screenshots/Screenshot%202026-10-05%20201824.png?raw=true)
-
-### Video Analysis Results
-
-![TrafficIQ video analysis player](https://github.com/chandravadhannadella/TrafficDensityPrediction/blob/main/Screenshots/Screenshot%202026-10-05%20201911.png?raw=true)
-
-![TrafficIQ video analytics and timeline](https://github.com/chandravadhannadella/TrafficDensityPrediction/blob/main/Screenshots/Screenshot%202026-10-05%20201935.png?raw=true)
-
-> **Note:** GitHub displays an image only when the referenced file exists at the specified path. Replace these placeholder filenames with your actual screenshot filenames if they differ.
+> The gallery uses the screenshot filenames currently documented in this repository. If a screenshot is renamed, update its path here too.
 
 ## ⚙️ How It Works
 
-1. **Upload media:** The user uploads a traffic image or video through the dashboard or REST API.
-2. **Detect vehicles:** YOLOv8n identifies supported vehicle classes in the input.
-3. **Extract features:** The image pipeline prepares image-level features, while the video pipeline samples frames and aggregates features across time windows.
-4. **Predict density:** The relevant saved classifier predicts a traffic-density category and returns associated confidence and vehicle-count information.
-5. **Display results:** The dashboard presents predictions, vehicle counts, annotated outputs, and video analytics.
+```text
+Road Image / Video
+        │
+        ▼
+  Upload via Dashboard or REST API
+        │
+        ▼
+  YOLOv8n Vehicle Detection
+        │
+        ├── Image pipeline ──► V4-Image classifier
+        │
+        └── Video pipeline ──► Frame sampling + tracking
+                               + time-window features
+                                      │
+                                      ▼
+                           Saved density classifier
+                                      │
+                                      ▼
+                     LOW / MEDIUM / HIGH prediction
+                                      │
+                                      ▼
+                   Counts • Confidence • Visual results
+```
 
-Image and video inference use separate model pipelines. The image pipeline uses the V4-Image model, while the video pipeline uses the V3 model and its associated artifacts.
+### Density Categories
 
-### Traffic Density Categories
-
-| Category | Description |
+| Category | Meaning |
 |---|---|
 | `LOW` | Lower observed vehicle count |
 | `MEDIUM` | Moderate observed vehicle count |
 | `HIGH` | Higher observed vehicle count |
 
-The image-model metadata documents proxy thresholds of 8 or fewer vehicles for `LOW`, 9–15 for `MEDIUM`, and 16 or more for `HIGH`. These are experimental proxy-label thresholds, not validated real-world traffic-density standards.
+The image-model metadata documents proxy thresholds of **8 or fewer vehicles for LOW**, **9–15 for MEDIUM**, and **16 or more for HIGH**. These thresholds are experimental proxies, not validated real-world traffic-density standards.
 
-## 🛠️ Technology Stack
+## 🧰 Technology Stack
 
-| Technology | Purpose |
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" alt="Flask" />
+  <img src="https://img.shields.io/badge/YOLOv8-7B61FF?style=flat-square" alt="YOLOv8" />
+  <img src="https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white" alt="OpenCV" />
+  <img src="https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white" alt="scikit-learn" />
+  <img src="https://img.shields.io/badge/NumPy-013243?style=flat-square&logo=numpy&logoColor=white" alt="NumPy" />
+  <img src="https://img.shields.io/badge/pandas-150458?style=flat-square&logo=pandas&logoColor=white" alt="pandas" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white" alt="pytest" />
+</p>
+
+| Technology | Role |
 |---|---|
-| Python | Application logic and machine-learning workflows |
-| Flask | Web application and REST API |
+| Python + Flask | Web application, routes, and REST API |
 | Ultralytics YOLOv8n | Vehicle detection |
-| OpenCV | Image processing and video analysis |
+| OpenCV | Image and video processing |
 | scikit-learn | Traffic-density classification |
-| NumPy and pandas | Numerical operations and feature preparation |
-| HTML5 | Web page structure |
-| CSS3 | Dashboard styling and responsive layout |
-| JavaScript | Frontend interactions and API communication |
-| pytest | Automated testing |
+| NumPy + pandas | Feature preparation and numerical processing |
+| HTML, CSS, JavaScript | Dashboard and browser interactions |
+| pytest | Automated tests |
 
-## 📋 Requirements
+## 🚀 Getting Started
 
-Before installing the project, make sure you have:
+### Prerequisites
 
-- Python 3.10 or newer.
-- pip, the Python package installer.
-- Git, for cloning the repository.
-- An internet connection for downloading dependencies.
-- At least 4 GB of RAM recommended for inference; additional memory may improve performance.
-- Optional CUDA-compatible GPU for acceleration, with a compatible PyTorch installation.
+- Python **3.10 or newer**
+- Git and pip
+- Internet access to install dependencies
+- **4 GB RAM or more recommended** for inference
+- Optional CUDA-compatible GPU with a matching PyTorch build
 
-**Important:** Dependency compatibility can vary by Python version, operating system, and CUDA configuration. Use a compatible PyTorch build if the requirements file does not match your system.
-
-## 🚀 Installation and Setup
-
-Follow these steps to download, configure, and run TrafficIQ on your computer.
-
-### 1. Clone the Repository
-
-Open a terminal and run:
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/chandravadhannadella/TrafficDensityPrediction.git
 cd TrafficDensityPrediction
 ```
 
-### 2. Verify Your Python Installation
+### 2. Create a virtual environment
 
-Check that Python and pip are available:
+A virtual environment keeps TrafficIQ's Python packages separate from other projects.
 
-```bash
-python --version
-python -m pip --version
-```
-
-If `python` is not recognized on Windows, try:
-
-```powershell
-py --version
-```
-
-Use a compatible Python version before proceeding.
-
-### 3. Create a Virtual Environment
-
-A virtual environment isolates this project's Python dependencies from other projects on your computer.
-
-**Windows — PowerShell:**
+**Windows — PowerShell**
 
 ```powershell
 python -m venv .venv
 ```
 
-If the `python` command is unavailable but the Python launcher works, use:
+If `python` is not recognized, try:
 
 ```powershell
 py -m venv .venv
 ```
 
-**macOS or Linux:**
+**macOS / Linux**
 
 ```bash
 python3 -m venv .venv
 ```
 
-This creates a local `.venv/` directory in the project root. It should not be uploaded to GitHub.
+### 3. Activate the environment
 
-### 4. Activate the Virtual Environment
-
-**Windows — PowerShell:**
+**Windows — PowerShell**
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-If PowerShell blocks activation because of its execution policy, run the following command in the current terminal session and retry activation:
+If PowerShell blocks activation for this session, run the following and activate again:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
-**Windows — Command Prompt:**
+**Windows — Command Prompt**
 
 ```cmd
 .venv\Scripts\activate.bat
 ```
 
-**macOS or Linux:**
+**macOS / Linux**
 
 ```bash
 source .venv/bin/activate
 ```
 
-After activation, your terminal will usually show `(.venv)` at the beginning of the command prompt.
+When activated, the terminal normally shows `(.venv)`.
 
-### 5. Upgrade pip and Install Dependencies
-
-With the virtual environment activated, run:
+### 4. Install dependencies
 
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
 
-Wait until installation completes. Some computer-vision and machine-learning dependencies may take several minutes to install.
+If installation fails due to a PyTorch or CUDA compatibility issue, follow the official [PyTorch installation guide](https://pytorch.org/get-started/locally/) and select a build that matches your operating system and hardware.
 
-If installation fails because of a PyTorch or CUDA compatibility issue, consult the official [PyTorch installation guide](https://pytorch.org/get-started/locally/) and install a compatible build for your system.
+### 5. Verify model artifacts
 
-### 6. Verify Required Model Files
+The repository includes `yolov8n.pt`. The saved classifier artifacts and any required metadata must also exist at the paths expected by the image and video pipelines. If an artifact is missing, its inference workflow may fail to load.
 
-TrafficIQ depends on its detector weights and saved classifier artifacts.
+### 6. Start TrafficIQ
 
-The repository includes `yolov8n.pt`. Ensure that the classifier files and any metadata required by the image and video pipelines are also present in the locations expected by the application.
-
-If a required model artifact is missing, the corresponding inference pipeline may fail to initialize or make predictions. Check the model-loading paths in the project's source code before running the application.
-
-### 7. Run the Application
-
-From the repository root, with the virtual environment activated, execute:
+From the project root, with `.venv` activated:
 
 ```bash
 python app.py
 ```
 
-Open your browser and visit:
+Open **[http://127.0.0.1:5000](http://127.0.0.1:5000)** in your browser.
 
-**http://127.0.0.1:5000**
+> Flask's built-in server is intended for local development. Use an appropriately configured production WSGI server before deploying publicly.
 
-The application uses Flask's development server by default. Do not expose this development server directly to the public internet.
+## 🧹 Virtual Environment & `__pycache__`
 
-## 🧹 Virtual Environments and `__pycache__`
+You do **not** need to manually create or upload `__pycache__` folders.
 
-Python automatically creates `__pycache__/` directories containing compiled bytecode files when modules are imported.
+| Item | What it is | Upload to GitHub? |
+|---|---|---|
+| `.venv/` | Local Python environment and installed packages | No |
+| `__pycache__/` | Automatically generated Python bytecode cache | No |
+| `*.pyc` | Compiled Python bytecode files | No |
+| `yolov8n.pt` | YOLOv8n detector weights used by the app | Included in this repository |
+| Training videos | Local development/training media | Excluded when ignored by `.gitignore` |
 
-These files are normal and do not need to be created manually.
+Python creates `__pycache__` folders automatically when modules are imported. They are safe to leave on your computer and are not required in version control. If `.venv` is damaged, recreate it using the setup steps above; do not delete your source code or required model artifacts.
 
-- **`.venv/`:** Contains the project's isolated Python environment and installed packages.
-- **`__pycache__/`:** Contains automatically generated Python bytecode files.
-- **`*.pyc`:** Individual compiled Python bytecode files.
+## 🎬 Supported Media
 
-These files should generally remain on your computer and be excluded from GitHub using `.gitignore`.
+- **Images:** JPG, JPEG, PNG, BMP, WebP
+- **Videos:** MP4, AVI, MOV, MKV
+- **Configured upload limit:** 200 MB
 
-You do **not** need to delete `__pycache__` folders before running the application. Python recreates them when needed.
+Video processing can require significant memory and time, depending on the clip's resolution, length, and hardware. Large training videos are not included when excluded by `.gitignore`; use your own compatible media or obtain the required data separately.
 
-If the virtual environment becomes corrupted, deactivate it, remove the local `.venv/` directory, and recreate it using the installation steps above. Do not delete your source code, datasets, model artifacts, or generated results when doing this.
+## 🔌 API Reference
 
-## ▶️ Using the Application
-
-1. Start the Flask application.
-2. Open the dashboard in your browser.
-3. Choose the image or video analysis workflow.
-4. Upload a supported road image or traffic video.
-5. Start processing and wait for the inference to complete.
-6. Review the predicted density, vehicle counts, confidence, and visual outputs.
-7. For videos, inspect the time-window predictions and traffic timeline.
-
-### Supported Media Formats
-
-**Images:** JPG, JPEG, PNG, BMP, and WebP.
-
-**Videos:** MP4, AVI, MOV, and MKV.
-
-The application is configured with an upload limit of 200 MB. Large video files may require substantial memory and processing time.
-
-The training videos used during development are not included in the GitHub repository when excluded by `.gitignore`. Users should provide their own compatible sample media or obtain the necessary data separately.
-
-## 🔌 REST API
-
-The Flask application exposes endpoints for health checks, media uploads, processing, status checks, and result retrieval.
-
-The following endpoints are documented by the project:
+The Flask app documents the following endpoints on port `5000`:
 
 | Method | Endpoint | Purpose |
 |---|---|---|
 | `GET` | `/api/health` | Check API availability and view the model disclaimer |
-| `POST` | `/api/upload-image` | Upload an image using the `image` multipart field |
-| `POST` | `/api/upload` | Upload a video using the `video` multipart field |
+| `POST` | `/api/upload-image` | Upload an image using multipart field `image` |
+| `POST` | `/api/upload` | Upload a video using multipart field `video` |
 | `POST` | `/api/process-image/<job_id>` | Start image inference |
 | `POST` | `/api/process/<job_id>` | Start video inference |
-| `GET` | `/api/status/<job_id>` | Check job status and progress |
+| `GET` | `/api/status/<job_id>` | Read job status and progress |
 | `GET` | `/api/results/<job_id>` | Retrieve completed results |
 
-### Example: Image Analysis
-
-Check API availability:
+### Example: upload an image
 
 ```bash
 curl http://127.0.0.1:5000/api/health
-```
 
-Upload an image:
-
-```bash
 curl -X POST \
   -F "image=@road.jpg" \
   http://127.0.0.1:5000/api/upload-image
 ```
 
-Use the returned `job_id` in the processing request:
+Use the returned `job_id` to start processing and query the result:
 
 ```bash
-curl -X POST \
-  http://127.0.0.1:5000/api/process-image/<job_id>
-```
-
-Check processing status:
-
-```bash
+curl -X POST http://127.0.0.1:5000/api/process-image/<job_id>
 curl http://127.0.0.1:5000/api/status/<job_id>
-```
-
-Retrieve completed results:
-
-```bash
 curl http://127.0.0.1:5000/api/results/<job_id>
 ```
 
-Replace `<job_id>` with the actual identifier returned by the application.
+Replace `<job_id>` with the actual identifier returned by the upload response. For video, upload with `-F "video=@traffic.mp4"` to `/api/upload`, then call `/api/process/<job_id>`.
 
-### Example: Video Analysis
+**Implementation note:** Video jobs run in a background thread within the Flask process, and job state is held in memory. Restarting the server clears active and completed job records.
 
-Upload a video:
+## 🧪 Run Tests
 
-```bash
-curl -X POST \
-  -F "video=@traffic.mp4" \
-  http://127.0.0.1:5000/api/upload
-```
-
-Use the returned job identifier to start video processing:
+With the virtual environment activated and dependencies installed:
 
 ```bash
-curl -X POST \
-  http://127.0.0.1:5000/api/process/<job_id>
+python -m pytest tests/ -v
 ```
 
-Check the job status and retrieve its results using the same status and results endpoints shown above.
+Run one test module:
 
-> **API behavior:** Video processing runs in a background thread within the Flask process. Job state is held in memory, so restarting the server clears active and completed job records.
+```bash
+python -m pytest tests/test_backend_api.py -v
+```
 
-## 📊 Prediction Outputs
-
-### Image Analysis
-
-Image results can include:
-
-- Predicted traffic-density category.
-- Classifier confidence or score.
-- Vehicle counts by supported class.
-- Class probabilities.
-- Model version information.
-- Annotated image information.
-
-### Video Analysis
-
-Video results can include:
-
-- Overall predicted density and confidence.
-- Number of analyzed time windows.
-- Per-window density predictions.
-- Traffic timeline and associated analytics.
-- Original and annotated video filenames.
-
-Confidence values represent the classifier's output, not a guarantee of real-world accuracy.
+Some tests may require saved model artifacts, sample media, or local configuration. Investigate individual test errors rather than assuming every failure means the entire application is broken.
 
 ## 📁 Project Structure
-
-The following is a high-level guide to the repository. Individual model artifacts and supporting files may vary with the selected model pipeline.
 
 ```text
 TrafficDensityPrediction/
 ├── app.py
 ├── requirements.txt
 ├── README.md
+├── LICENSE
 ├── .gitignore
 ├── yolov8n.pt
 ├── backend/
-│   ├── routes/
-│   │   ├── prediction_routes.py
-│   │   └── upload_routes.py
-│   ├── services/
-│   │   ├── detection_service.py
-│   │   ├── image_service.py
-│   │   ├── prediction_service.py
-│   │   └── video_service.py
-│   └── utils/
-├── data/
-│   └── datasets and local media
+│   ├── routes/       # Upload, processing, status, and result endpoints
+│   ├── services/     # Image, video, detection, and prediction services
+│   └── utils/        # Shared backend helpers
+├── data/             # Datasets and local media (some files excluded)
 ├── model/
 │   ├── detection/
 │   ├── evaluation/
 │   ├── inference/
 │   ├── training/
 │   └── utils/
-├── outputs/
-├── Screenshots/
-├── scripts/
+├── outputs/           # Generated results (local)
+├── Screenshots/       # README screenshots and TrafficIQ logo
+├── scripts/           # Dataset and utility scripts
 ├── static/
 │   ├── assets/
 │   ├── CSS/
 │   └── js/
-├── templates/
-│   ├── analytics.html
-│   ├── dashboard.html
-│   └── index.html
-└── tests/
-    ├── test_backend_api.py
-    ├── test_detector.py
-    ├── test_prediction.py
-    └── additional test modules
+├── templates/          # Flask HTML templates
+└── tests/              # Automated tests
 ```
-
-### Key Directories
-
-- **`backend/`** — Flask route handlers, processing services, and shared backend utilities.
-- **`data/`** — Datasets and local media used for development and evaluation. Large training videos may be excluded from version control.
-- **`model/`** — Detection, inference, tracking, training, evaluation, and supporting machine-learning components.
-- **`outputs/`** — Generated analysis outputs and other local results.
-- **`Screenshots/`** — Screenshots used to document the application.
-- **`scripts/`** — Dataset-generation and utility scripts.
-- **`static/`** — Frontend CSS, JavaScript, and static assets.
-- **`templates/`** — Flask HTML templates.
-- **`tests/`** — Automated tests for backend APIs and model pipelines.
-
-## 🧪 Running Tests
-
-Activate the virtual environment and ensure dependencies are installed. From the project root, run:
-
-```bash
-python -m pytest tests/ -v
-```
-
-To run a specific test module:
-
-```bash
-python -m pytest tests/test_backend_api.py -v
-```
-
-Some tests may require model artifacts, sample media, or additional local configuration. A failed test should be investigated using its error output rather than assumed to indicate an application-wide failure.
-
-## ⚙️ Configuration and Development
-
-Video sampling and feature-extraction settings are defined in the project's pipeline configuration. The documented defaults include:
-
-- Detection confidence threshold: `0.25`
-- Frame sampling interval: every `30` frames
-- Video analysis window: `10` seconds
-
-Verify the configuration file and current source code before changing these values, because inference behavior can depend on the selected model pipeline.
-
-### Recommended Development Workflow
-
-1. Create and activate `.venv`.
-2. Install dependencies from `requirements.txt`.
-3. Keep local datasets and generated media separate from source code.
-4. Run the Flask application and validate image and video workflows.
-5. Run the relevant tests after code changes.
-6. Commit source-code changes to Git without including virtual environments, cache files, secrets, or unnecessary large media.
 
 ## ⚠️ Limitations
 
-- Density labels are derived from proxy vehicle-count thresholds rather than independently verified ground truth.
-- Detection performance depends on camera angle, lighting, occlusion, resolution, and model weights.
-- Vehicle counts and tracking results may be imperfect when vehicles overlap or leave the frame.
-- Classifier confidence is not equivalent to calibrated real-world certainty.
-- Video job state is stored in process memory and does not persist across server restarts.
-- The included Flask development server is not intended for production deployment.
-- Large datasets and training videos may be excluded from GitHub to keep the repository manageable.
+- Density classes are based on vehicle-count proxy labels, not independently verified traffic annotations.
+- Detection quality depends on camera angle, lighting, occlusion, resolution, and model weights.
+- Vehicle counts and tracking may be imperfect when vehicles overlap or leave the frame.
+- Model confidence is not a guarantee of real-world accuracy.
+- Video job state is stored in process memory and does not persist after server restarts.
+- The Flask development server is not intended for production deployment.
 
 ## 🙌 Acknowledgments
 
-TrafficIQ uses the following open-source technologies:
+TrafficIQ uses open-source technologies including [Ultralytics YOLO](https://github.com/ultralytics/ultralytics), [OpenCV](https://opencv.org/), [scikit-learn](https://scikit-learn.org/), [Flask](https://flask.palletsprojects.com/), [NumPy](https://numpy.org/), and [pandas](https://pandas.pydata.org/).
 
-- [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) — object detection.
-- [OpenCV](https://opencv.org/) — computer vision and video processing.
-- [scikit-learn](https://scikit-learn.org/) — machine-learning utilities and classification.
-- [Flask](https://flask.palletsprojects.com/) — web application framework.
-- [NumPy](https://numpy.org/) and [pandas](https://pandas.pydata.org/) — data processing.
-
-Please review the relevant licenses and usage terms for third-party packages, pretrained weights, and datasets before redistributing them.
+Please review the license terms for third-party libraries, pretrained weights, datasets, and external assets before redistributing them.
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for the complete license text.
+This project is licensed under the **MIT License**. See [`LICENSE`](LICENSE) for the full license text. Third-party packages, pretrained model weights, datasets, and other external assets remain subject to their own licenses and terms.
 
-The license applies to the project materials that the repository owner has the right to license. Third-party libraries, pretrained model weights, datasets, and other external assets remain subject to their respective licenses and terms.
+---
 
-**TrafficIQ — Exploring traffic density estimation through computer vision and machine learning.**
+<div align="center">
+  <img src="Screenshots/trafficIQ-logo.png" alt="TrafficIQ logo" width="56" />
+  <p><strong>TrafficIQ</strong> · Turning visual traffic data into useful insights.</p>
+  <sub>Built with Python, computer vision, and machine learning.</sub>
+</div>
