@@ -1,0 +1,8 @@
+[
+  "car_count",
+  "bus_count",
+  "truck_count",
+  "motorcycle_count",
+  "bicycle_count",
+  "total_vehicle_count"
+]

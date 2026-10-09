@@ -1,0 +1,19 @@
+model_name,feature,importance
+Logistic Regression,car_count,3.0136002964764956
+Logistic Regression,bus_count,0.959807514688425
+Logistic Regression,truck_count,0.4828680803585838
+Logistic Regression,motorcycle_count,0.16774111643895803
+Logistic Regression,bicycle_count,0.07365975830153228
+Logistic Regression,total_vehicle_count,3.004977430746228
+Random Forest,car_count,0.3133688312893422
+Random Forest,bus_count,0.061675997356415824
+Random Forest,truck_count,0.026500254077799795
+Random Forest,motorcycle_count,0.0031268234853335927
+Random Forest,bicycle_count,0.0006326848065506302
+Random Forest,total_vehicle_count,0.5946954089845579
+Gradient Boosting,car_count,1.3863305143500436e-15
+Gradient Boosting,bus_count,5.830972721801541e-16
+Gradient Boosting,truck_count,2.407197489349904e-16
+Gradient Boosting,motorcycle_count,1.7671866573831404e-16
+Gradient Boosting,bicycle_count,2.6031445740938536e-18
+Gradient Boosting,total_vehicle_count,0.9999999999999976

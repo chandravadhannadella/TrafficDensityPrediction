@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traffic Density Prediction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="4" y="20" width="6" height="8" fill="currentColor" opacity="0.7"/>
+            <rect x="13" y="12" width="6" height="16" fill="currentColor" opacity="0.9"/>
+            <rect x="22" y="4" width="6" height="24" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <h1>TrafficIQ</h1>
+          <p>Intelligence</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <span class="nav-icon">◆</span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#analyze" class="nav-item" data-section="analyze">
+          <span class="nav-icon">⚡</span>
+          <span class="nav-label">Analyze</span>
+        </a>
+        <a href="#image-results" class="nav-item" data-section="image-results">
+          <span class="nav-icon">⬜</span>
+          <span class="nav-label">Image Results</span>
+        </a>
+        <a href="#video-results" class="nav-item" data-section="video-results">
+          <span class="nav-icon">▣</span>
+          <span class="nav-label">Video Results</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="status-pulse"></span>
+          <span class="status-text">Model Ready</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-title">
+          <h2 id="page-title">Dashboard</h2>
+          <p id="page-subtitle">Traffic density intelligence</p>
+        </div>
+      </header>
+
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="section dashboard-section">
+        <div class="section-header">
+          <h2>Traffic Intelligence</h2>
+          <p>Analyze traffic density from images and video</p>
+        </div>
+
+        <div class="dashboard-cards">
+          <div class="dashboard-card image-card">
+            <div class="card-icon">⬜</div>
+            <h3>Image Analysis</h3>
+            <p>Analyze a single road image</p>
+            <p class="card-detail">Detect vehicles and estimate traffic density</p>
+            <button class="card-button" data-action="goto-analyze-image">Analyze Image</button>
+          </div>
+
+          <div class="dashboard-card video-card">
+            <div class="card-icon">▣</div>
+            <h3>Video Analysis</h3>
+            <p>Analyze traffic over time</p>
+            <p class="card-detail">Track density changes across video windows</p>
+            <button class="card-button" data-action="goto-analyze-video">Analyze Video</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Analysis Section -->
+      <section id="analyze" class="section analyze-section hidden">
+        <div class="section-header">
+          <h2>Analysis Workspace</h2>
+          <p>Choose an input source and start analysis</p>
+        </div>
+
+        <div class="mode-tabs">
+          <button class="tab-button active" data-mode="image">Image</button>
+          <button class="tab-button" data-mode="video">Video</button>
+        </div>
+
+        <!-- Image Analysis -->
+        <div id="image-mode" class="mode-content active">
+          <div class="upload-workspace">
+            <div class="upload-section">
+              <div class="section-header">
+                <h3>Upload Traffic Image</h3>
+                <p>Analyze a single road scene</p>
+              </div>
+
+              <form id="image-upload-form" class="upload-form">
+
+                <div id="image-drop-zone" class="drop-zone" tabindex="0" aria-label="Upload traffic image">
+                  <div class="drop-icon">⬜</div>
+                  <h4>Drop your image here</h4>
+                  <p>or <label class="browse-link" for="image-input">browse files</label></p>
+                  <p class="file-types">JPG • PNG • JPEG</p>
+                  <input id="image-input" type="file" name="image" accept=".jpg,.jpeg,.png,.bmp,.webp" />
+                </div>
+
+                <div id="image-file-meta" class="file-meta hidden">
+                  <div class="meta-row">
+                    <span>Filename</span>
+                    <strong id="image-selected-name">—</strong>
+                  </div>
+                  <div class="meta-row">
+                    <span>Size</span>
+                    <strong id="image-selected-size">—</strong>
+                  </div>
+                  <div class="meta-row">
+                    <span>Type</span>
+                    <strong id="image-selected-type">—</strong>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button id="image-remove-btn" type="button" class="btn btn-secondary hidden">Remove</button>
+                  <button id="image-analyze-btn" type="submit" class="btn btn-primary" disabled>Analyze Image</button>
+                </div>
+              </form>
+            </div>
+
+            <div id="image-preview-section" class="preview-section hidden">
+              <div class="preview-container">
+                <div class="preview-header">
+                  <h3>Preview</h3>
+                </div>
+                <div class="preview-box">
+                  <img id="image-preview" alt="Selected traffic image" />
+                </div>
+                <div class="preview-meta">
+                  <span id="image-preview-size">—</span>
+                  <span id="image-preview-dims">—</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Analysis -->
+        <div id="video-mode" class="mode-content hidden">
+          <div class="upload-workspace">
+            <div class="upload-section">
+              <div class="section-header">
+                <h3>Upload Traffic Video</h3>
+                <p>Analyze traffic patterns over time</p>
+              </div>
+
+              <form id="video-upload-form" class="upload-form">
+                <div id="video-drop-zone" class="drop-zone" tabindex="0" aria-label="Upload traffic video">
+                  <div class="drop-icon">▣</div>
+                  <h4>Drop your video here</h4>
+                  <p>or <label class="browse-link" for="video-input">browse files</label></p>
+                  <p class="file-types">MP4 • AVI • MOV • MKV</p>
+                  <input id="video-input" type="file" name="video" accept=".mp4,.avi,.mov,.mkv" />
+                </div>
+
+                <div id="video-file-meta" class="file-meta hidden">
+                  <div class="meta-row">
+                    <span>Filename</span>
+                    <strong id="video-selected-name">—</strong>
+                  </div>
+                  <div class="meta-row">
+                    <span>Size</span>
+                    <strong id="video-selected-size">—</strong>
+                  </div>
+                  <div class="meta-row">
+                    <span>Type</span>
+                    <strong id="video-selected-type">—</strong>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button id="video-remove-btn" type="button" class="btn btn-secondary hidden">Remove</button>
+                  <button id="video-analyze-btn" type="submit" class="btn btn-primary" disabled>Analyze Video</button>
+                </div>
+              </form>
+            </div>
+
+            <div id="video-preview-section" class="preview-section hidden">
+              <div class="preview-container">
+                <div class="preview-header">
+                  <h3>Preview</h3>
+                </div>
+                <div class="preview-box video-box">
+                  <video id="video-preview" controls playsinline></video>
+                </div>
+                <div class="preview-meta">
+                  <span id="video-preview-duration">—</span>
+                  <span id="video-preview-resolution">—</span>
+                  <span id="video-preview-size">—</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Processing Status -->
+      <div id="processing-modal" class="processing-modal hidden">
+        <div class="processing-content">
+          <div class="processing-spinner"></div>
+          <h3>Processing</h3>
+          <div class="processing-steps">
+            <div class="step-item" data-step="1">
+              <span class="step-number">1</span>
+              <span class="step-label">Upload</span>
+            </div>
+            <div class="step-item" data-step="2">
+              <span class="step-number">2</span>
+              <span class="step-label">Detect</span>
+            </div>
+            <div class="step-item" data-step="3">
+              <span class="step-number">3</span>
+              <span class="step-label">Analyze</span>
+            </div>
+            <div class="step-item" data-step="4">
+              <span class="step-number">4</span>
+              <span class="step-label">Predict</span>
+            </div>
+          </div>
+          <p id="processing-message">Analyzing traffic...</p>
+        </div>
+      </div>
+
+      <!-- Image Results Section -->
+      <section id="image-results" class="section results-section image-results-section hidden">
+        <!-- Empty State -->
+        <div id="image-results-empty" class="empty-state hidden">
+          <div class="empty-state-content">
+            <div class="empty-icon">⬜</div>
+            <h3>No Image Analysis Yet</h3>
+            <p>You haven't analyzed any images yet. Go to the Analyze page to upload and analyze a traffic image.</p>
+            <button class="btn btn-primary" data-action="goto-analyze-image">Analyze Image</button>
+          </div>
+        </div>
+
+        <!-- Results Content -->
+        <div id="image-results-content" class="results-content hidden">
+          <div class="section-header">
+            <h2>Image Analysis Result</h2>
+            <p id="image-result-filename">—</p>
+          </div>
+
+          <div class="results-grid image-results-grid">
+            <div class="result-column result-image-col">
+              <div class="result-preview">
+                <img id="result-image" alt="Analyzed traffic image" />
+              </div>
+            </div>
+
+            <div class="result-column result-analysis-col">
+              <div class="result-card prediction-card">
+                <div class="card-label">Traffic Density</div>
+                <div id="image-result-density" class="density-display low">
+                  <span class="density-value">LOW</span>
+                </div>
+                <div class="confidence-section">
+                  <div class="confidence-label">Model Confidence</div>
+                  <div class="confidence-value" id="image-result-confidence">95.4%</div>
+                  <div class="confidence-bar">
+                    <div id="image-confidence-fill" class="confidence-fill"></div>
+                  </div>
+                  <div class="confidence-text">High confidence</div>
+                </div>
+              </div>
+
+              <div class="result-card vehicles-card">
+                <div class="card-label">Vehicle Breakdown</div>
+                <div id="image-detection-list" class="vehicle-list">
+                  <!-- Populated by JS -->
+                </div>
+                <div class="vehicle-total">
+                  <span>Total Vehicles</span>
+                  <strong id="image-total-vehicles">0</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-summary">
+            <div class="summary-card">
+              <div class="card-label">Analysis Summary</div>
+              <p id="image-result-summary">Analyzing traffic conditions...</p>
+            </div>
+
+            <div class="summary-card">
+              <div class="card-label">Details</div>
+              <div class="details-grid">
+                <div class="detail-item">
+                  <span>Model</span>
+                  <strong id="image-detail-model">—</strong>
+                </div>
+                <div class="detail-item">
+                  <span>Confidence</span>
+                  <strong id="image-detail-confidence">—</strong>
+                </div>
+                <div class="detail-item">
+                  <span>Filename</span>
+                  <strong id="image-detail-file">—</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="disclaimer">
+            <p id="image-disclaimer">Current model: baseline estimator trained using proxy-labeled traffic data. Results may vary with unseen traffic conditions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Results Section -->
+      <section id="video-results" class="section results-section video-results-section hidden">
+        <!-- Empty State -->
+        <div id="video-results-empty" class="empty-state hidden">
+          <div class="empty-state-content">
+            <div class="empty-icon">▣</div>
+            <h3>No Video Analysis Yet</h3>
+            <p>You haven't analyzed any videos yet. Go to the Analyze page to upload and analyze a traffic video.</p>
+            <button class="btn btn-primary" data-action="goto-analyze-video">Analyze Video</button>
+          </div>
+        </div>
+
+        <!-- Results Content -->
+        <div id="video-results-content" class="results-content hidden">
+          <div class="section-header">
+            <h2>Video Analysis Results</h2>
+            <p id="video-result-filename">—</p>
+          </div>
+
+          <div class="video-player-container">
+            <div class="video-player">
+              <video id="result-video" controls playsinline></video>
+            </div>
+            <div class="player-meta">
+              <span id="result-video-duration">—</span>
+              <span id="result-video-resolution">—</span>
+              <span id="result-video-size">—</span>
+            </div>
+          </div>
+
+          <div class="metrics-strip">
+            <div class="metric-card">
+              <div class="metric-value" id="metric-windows">—</div>
+              <div class="metric-label">Windows Analyzed</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="metric-confidence">—</div>
+              <div class="metric-label">Avg Confidence</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value traffic-status" id="metric-dominant">—</div>
+              <div class="metric-label">Dominant Traffic</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-value" id="metric-vehicles">—</div>
+              <div class="metric-label">Total Vehicles</div>
+            </div>
+          </div>
+
+          <div class="timeline-container">
+            <div class="timeline-header">
+              <h3>Traffic Timeline</h3>
+            </div>
+            <div id="traffic-timeline" class="traffic-timeline">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="data-table-container">
+            <div class="table-header">
+              <h3>Window Analysis</h3>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Traffic Level</th>
+                    <th>Confidence</th>
+                    <th>Low %</th>
+                    <th>Medium %</th>
+                    <th>High %</th>
+                  </tr>
+                </thead>
+                <tbody id="window-table-body">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="traffic-overview">
+            <div class="overview-card">
+              <div class="card-label">Traffic Overview</div>
+              <p id="video-result-summary">Analyzing video...</p>
+              <div class="traffic-distribution">
+                <div class="distribution-item">
+                  <span class="level-low"></span>
+                  <span id="dist-low">0</span>
+                  <span>windows</span>
+                </div>
+                <div class="distribution-item">
+                  <span class="level-medium"></span>
+                  <span id="dist-medium">0</span>
+                  <span>windows</span>
+                </div>
+                <div class="distribution-item">
+                  <span class="level-high"></span>
+                  <span id="dist-high">0</span>
+                  <span>windows</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="overview-card">
+              <div class="card-label">Model Information</div>
+              <p id="video-model-info">V3 Traffic Density Model - Production Candidate</p>
+              <p class="disclaimer-text">Trained on proxy-labeled traffic dataset. Results represent estimated traffic conditions.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/ui-controller.js') }}"></script>
+</body>
+</html>

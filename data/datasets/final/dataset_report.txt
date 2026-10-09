@@ -1,0 +1,26 @@
+Traffic Density Dataset Validation Report
+======================================
+Total rows: 38
+Total videos: 11
+Total features: 9
+Target classes: LOW, MEDIUM, HIGH
+
+Class distribution:
+- HIGH: 12
+- LOW: 10
+- MEDIUM: 16
+
+Split summary:
+- train rows: 20 | videos: ['video_0003', 'video_0004', 'video_0006', 'video_0007', 'video_0008', 'video_0009', 'video_0010']
+- validation rows: 9 | videos: ['video_0001', 'video_0005']
+- test rows: 9 | videos: ['video_0002', 'video_0011']
+
+Data leakage checks:
+- Group split performed by video_id only.
+- Same video never appears in more than one split.
+- congestion_score intentionally excluded to avoid target leakage.
+- traffic_density is the only target variable.
+
+Dataset readiness:
+- The current dataset size is insufficient to claim a highly accurate generalized traffic-density model.
+- More videos should be added to data/videos/training/ and the pipeline rerun.

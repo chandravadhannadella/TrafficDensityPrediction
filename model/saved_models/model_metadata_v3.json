@@ -1,0 +1,48 @@
+{
+  "model_name": "Gradient Boosting",
+  "model_version": "v3",
+  "training_dataset_size": 20,
+  "image_sample_count": 20,
+  "video_sample_count": 0,
+  "class_distribution": {
+    "LOW": 10,
+    "MEDIUM": 16,
+    "HIGH": 12
+  },
+  "feature_names": [
+    "avg_car_count",
+    "avg_bus_count",
+    "avg_truck_count",
+    "avg_motorcycle_count",
+    "avg_bicycle_count",
+    "max_vehicle_count",
+    "unique_vehicle_count",
+    "traffic_flow"
+  ],
+  "preprocessing_method": "None",
+  "training_date": "2026-08-29T17:59:31Z",
+  "validation_accuracy": 1.0,
+  "test_accuracy": 0.7777777777777778,
+  "validation_macro_f1": 1.0,
+  "test_macro_f1": 0.4523809523809524,
+  "cross_validation_results": {
+    "accuracy_mean": 0.9188034188034188,
+    "macro_f1_mean": 0.9197530864197532
+  },
+  "label_source": "proxy_thresholds",
+  "training_configuration": {
+    "split_strategy": "group-aware when video_id/group_id available else stratified fallback",
+    "label_order": [
+      "LOW",
+      "MEDIUM",
+      "HIGH"
+    ],
+    "models_tested": [
+      "Logistic Regression",
+      "Random Forest",
+      "Gradient Boosting",
+      "HistGradientBoosting",
+      "SVM"
+    ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "dataset_summary": {
+    "total_rows": 38,
+    "total_videos": 11,
+    "total_features": 9,
+    "target_column": "traffic_density",
+    "target_classes": [
+      "LOW",
+      "MEDIUM",
+      "HIGH"
+    ],
+    "class_distribution": {
+      "HIGH": 12,
+      "LOW": 10,
+      "MEDIUM": 16
+    },
+    "missing_values": {
+      "avg_car_count": 0,
+      "avg_bus_count": 0,
+      "avg_truck_count": 0,
+      "avg_motorcycle_count": 0,
+      "avg_bicycle_count": 0,
+      "avg_total_vehicle_count": 0,
+      "max_vehicle_count": 0,
+      "unique_vehicle_count": 0,
+      "traffic_flow": 0,
+      "traffic_density": 0
+    },
+    "duplicate_rows": 0,
+    "feature_ranges": {
+      "avg_car_count": {
+        "min": 0.2,
+        "max": 12.75
+      },
+      "avg_bus_count": {
+        "min": 0.0,
+        "max": 3.875
+      },
+      "avg_truck_count": {
+        "min": 0.0,
+        "max": 2.25
+      },
+      "avg_motorcycle_count": {
+        "min": 0.0,
+        "max": 13.5
+      },
+      "avg_bicycle_count": {
+        "min": 0.0,
+        "max": 0.0
+      },
+      "avg_total_vehicle_count": {
+        "min": 0.2,
+        "max": 18.55
+      },
+      "max_vehicle_count": {
+        "min": 1.0,
+        "max": 31.0
+      },
+      "unique_vehicle_count": {
+        "min": 1.0,
+        "max": 31.0
+      },
+      "traffic_flow": {
+        "min": 0.2,
+        "max": 37.0629
+      }
+    }
+  },
+  "split_summary": {
+    "train_rows": 20,
+    "validation_rows": 9,
+    "test_rows": 9,
+    "train_videos": 7,
+    "validation_videos": 2,
+    "test_videos": 2,
+    "video_ids_by_split": {
+      "train": [
+        "video_0003",
+        "video_0004",
+        "video_0006",
+        "video_0007",
+        "video_0008",
+        "video_0009",
+        "video_0010"
+      ],
+      "validation": [
+        "video_0001",
+        "video_0005"
+      ],
+      "test": [
+        "video_0002",
+        "video_0011"
+      ]
+    }
+  },
+  "data_leakage_checks": {
+    "group_split_by_video_id": true,
+    "same_video_in_multiple_splits": false,
+    "congestion_score_excluded_from_model_features": true,
+    "target_column_present_only_in_labeled_dataset": true
+  },
+  "dataset_readiness": {
+    "status": "insufficient_for_high_accuracy_generalized_model",
+    "reason": "Only 38 aggregated time windows are available; this is a small dataset and should be treated as a starting point for a pipeline rather than a final production model."
+  }
+}

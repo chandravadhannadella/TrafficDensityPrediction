@@ -1,0 +1,41 @@
+model_name,feature,importance
+Logistic Regression,avg_car_count,0.5615668792354446
+Logistic Regression,avg_bus_count,0.42688517190623565
+Logistic Regression,avg_truck_count,0.30209399438224366
+Logistic Regression,avg_motorcycle_count,0.13584826121927407
+Logistic Regression,avg_bicycle_count,0.0
+Logistic Regression,max_vehicle_count,0.5148430980331008
+Logistic Regression,unique_vehicle_count,0.5148430980331008
+Logistic Regression,traffic_flow,0.44619678836550475
+Random Forest,avg_car_count,0.1593977356809469
+Random Forest,avg_bus_count,0.07500641078260331
+Random Forest,avg_truck_count,0.08882357799415821
+Random Forest,avg_motorcycle_count,0.034238043065881636
+Random Forest,avg_bicycle_count,0.0
+Random Forest,max_vehicle_count,0.2617863488688617
+Random Forest,unique_vehicle_count,0.20633619777639797
+Random Forest,traffic_flow,0.17441168583115033
+Gradient Boosting,avg_car_count,0.18733634018937342
+Gradient Boosting,avg_bus_count,0.0
+Gradient Boosting,avg_truck_count,0.0
+Gradient Boosting,avg_motorcycle_count,0.0
+Gradient Boosting,avg_bicycle_count,0.0
+Gradient Boosting,max_vehicle_count,0.35779851131107254
+Gradient Boosting,unique_vehicle_count,0.3456646139619902
+Gradient Boosting,traffic_flow,0.10920053453756379
+HistGradientBoosting,avg_car_count,0.0
+HistGradientBoosting,avg_bus_count,0.0
+HistGradientBoosting,avg_truck_count,0.0
+HistGradientBoosting,avg_motorcycle_count,0.0
+HistGradientBoosting,avg_bicycle_count,0.0
+HistGradientBoosting,max_vehicle_count,0.0
+HistGradientBoosting,unique_vehicle_count,0.0
+HistGradientBoosting,traffic_flow,0.0
+SVM,avg_car_count,0.0
+SVM,avg_bus_count,0.0
+SVM,avg_truck_count,0.0
+SVM,avg_motorcycle_count,0.0
+SVM,avg_bicycle_count,0.0
+SVM,max_vehicle_count,0.0
+SVM,unique_vehicle_count,0.0
+SVM,traffic_flow,0.0

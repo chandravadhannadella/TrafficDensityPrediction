@@ -1,0 +1,37 @@
+{
+  "target_column": "traffic_density",
+  "label_order": [
+    "LOW",
+    "MEDIUM",
+    "HIGH"
+  ],
+  "feature_names": [
+    "avg_car_count",
+    "avg_bus_count",
+    "avg_truck_count",
+    "avg_motorcycle_count",
+    "avg_bicycle_count",
+    "max_vehicle_count",
+    "unique_vehicle_count",
+    "traffic_flow"
+  ],
+  "best_model_name": "Logistic Regression",
+  "proxy_label_note": "The current labels are proxy labels derived from avg_total_vehicle_count and are not verified human ground-truth labels.",
+  "data_files": {
+    "train": "C:\\Users\\chand\\Desktop\\TrafficDensityPrediction\\data\\datasets\\final\\train.csv",
+    "validation": "C:\\Users\\chand\\Desktop\\TrafficDensityPrediction\\data\\datasets\\final\\validation.csv",
+    "test": "C:\\Users\\chand\\Desktop\\TrafficDensityPrediction\\data\\datasets\\final\\test.csv"
+  },
+  "validation_metrics": {
+    "Logistic Regression": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0
+    }
+  },
+  "test_metrics": {
+    "Logistic Regression": {
+      "accuracy": 0.5555555555555556,
+      "macro_f1": 0.38888888888888884
+    }
+  }
+}

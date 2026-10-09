@@ -1,0 +1,75 @@
+{
+  "video": "1000110421.mp4",
+  "overall_traffic_density": "LOW",
+  "overall_confidence": 0.9964,
+  "windows_processed": 3,
+  "low_windows": 3,
+  "medium_windows": 0,
+  "high_windows": 0,
+  "window_predictions": [
+    {
+      "video_name": "1000110421.mp4",
+      "window_start": 0.0,
+      "window_end": 10.0,
+      "avg_car_count": 2.3333,
+      "avg_bus_count": 0.0,
+      "avg_truck_count": 0.2222,
+      "avg_motorcycle_count": 0.0,
+      "avg_bicycle_count": 0.0,
+      "avg_vehicle_confidence": 0.5088,
+      "average_vehicle_movement": 23.0312,
+      "approximate_average_speed": 23.0312,
+      "traffic_flow": 2.5556,
+      "predicted_traffic_density": "LOW",
+      "confidence": 1.0,
+      "probabilities": {
+        "HIGH": 0.0,
+        "LOW": 1.0,
+        "MEDIUM": 0.0
+      }
+    },
+    {
+      "video_name": "1000110421.mp4",
+      "window_start": 10.0,
+      "window_end": 20.0,
+      "avg_car_count": 3.2,
+      "avg_bus_count": 0.1,
+      "avg_truck_count": 0.3,
+      "avg_motorcycle_count": 0.0,
+      "avg_bicycle_count": 0.0,
+      "avg_vehicle_confidence": 0.522,
+      "average_vehicle_movement": 25.3701,
+      "approximate_average_speed": 25.3701,
+      "traffic_flow": 3.6,
+      "predicted_traffic_density": "LOW",
+      "confidence": 0.9892,
+      "probabilities": {
+        "HIGH": 0.0056,
+        "LOW": 0.9892,
+        "MEDIUM": 0.0052
+      }
+    },
+    {
+      "video_name": "1000110421.mp4",
+      "window_start": 20.0,
+      "window_end": 30.0,
+      "avg_car_count": 2.0,
+      "avg_bus_count": 0.0,
+      "avg_truck_count": 0.0,
+      "avg_motorcycle_count": 0.0,
+      "avg_bicycle_count": 0.0,
+      "avg_vehicle_confidence": 0.5129,
+      "average_vehicle_movement": 24.7201,
+      "approximate_average_speed": 24.7201,
+      "traffic_flow": 2.0,
+      "predicted_traffic_density": "LOW",
+      "confidence": 1.0,
+      "probabilities": {
+        "HIGH": 0.0,
+        "LOW": 1.0,
+        "MEDIUM": 0.0
+      }
+    }
+  ],
+  "proxy_label_note": "Baseline traffic-density estimator using proxy labels derived from avg_total_vehicle_count; not scientifically validated real-world ground truth."
+}

@@ -1,0 +1,10 @@
+avg_car_count,avg_bus_count,avg_truck_count,avg_motorcycle_count,avg_bicycle_count,avg_total_vehicle_count,max_vehicle_count,unique_vehicle_count,traffic_flow,traffic_density
+2.1,0.0,0.2,0.0,0.0,2.3,5,5,2.3,LOW
+3.2,0.1,0.3,0.0,0.0,3.6,7,7,3.6,LOW
+2.0,0.0,0.0,0.0,0.0,2.0,2,2,2.0,LOW
+9.1111,0.0,0.6667,0.0,0.0,9.7778,13,13,8.1481,MEDIUM
+5.5,0.0,1.125,0.0,0.0,6.625,8,8,5.5208,MEDIUM
+7.25,0.0,0.25,0.0,0.0,7.5,11,11,6.25,MEDIUM
+7.6667,0.0,0.2222,0.0,0.0,7.8889,10,10,6.5741,MEDIUM
+11.5,0.625,1.0,0.0,0.0,13.125,16,16,10.9375,HIGH
+12.75,1.375,0.75,0.0,0.0,14.875,18,18,12.3958,HIGH

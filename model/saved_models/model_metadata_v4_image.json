@@ -1,0 +1,41 @@
+{
+  "model_name": "Random Forest",
+  "model_version": "v4_image",
+  "training_type": "image_specific",
+  "training_dataset_size": 646,
+  "validation_dataset_size": 93,
+  "test_dataset_size": 185,
+  "total_images": 924,
+  "class_distribution": {
+    "LOW": 336,
+    "MEDIUM": 243,
+    "HIGH": 345
+  },
+  "feature_names": [
+    "car_count",
+    "bus_count",
+    "truck_count",
+    "motorcycle_count",
+    "bicycle_count",
+    "total_vehicle_count"
+  ],
+  "preprocessing_method": "NoOpScaler",
+  "training_date": "2026-08-29T18:35:45Z",
+  "validation_accuracy": 1.0,
+  "validation_macro_f1": 1.0,
+  "test_accuracy": 1.0,
+  "test_macro_f1": 1.0,
+  "cv_accuracy": 1.0,
+  "cv_macro_f1": 1.0,
+  "label_source": "proxy_thresholds (vehicle_count <= 8 = LOW, 9-15 = MEDIUM, >= 16 = HIGH)",
+  "proxy_thresholds": {
+    "low_max": 8,
+    "high_min": 16
+  },
+  "proxy_label_note": "V4-IMAGE traffic-density labels are proxy labels derived from total_vehicle_count thresholds (LOW <= 8, MEDIUM 9-15, HIGH >= 16) and are not verified human ground-truth labels.",
+  "models_tested": [
+    "Logistic Regression",
+    "Random Forest",
+    "Gradient Boosting"
+  ]
+}

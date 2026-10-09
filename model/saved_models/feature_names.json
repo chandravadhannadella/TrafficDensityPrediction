@@ -1,0 +1,10 @@
+[
+  "avg_car_count",
+  "avg_bus_count",
+  "avg_truck_count",
+  "avg_motorcycle_count",
+  "avg_bicycle_count",
+  "max_vehicle_count",
+  "unique_vehicle_count",
+  "traffic_flow"
+]

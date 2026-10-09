@@ -1,0 +1,64 @@
+# ==============================
+# Python cache files
+# ==============================
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ==============================
+# Virtual environments
+# ==============================
+.venv/
+venv/
+env/
+
+# ==============================
+# Environment variables and secrets
+# ==============================
+.env
+.env.*
+!.env.example
+
+# ==============================
+# IDE and operating system files
+# ==============================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ==============================
+# Logs
+# ==============================
+*.log
+
+# ==============================
+# Uploaded files
+# Ignore uploaded user files
+uploads/*
+!uploads/.gitkeep
+
+# ==============================
+# Generated outputs
+# ==============================
+outputs/*
+!outputs/.gitkeep
+
+# ==============================
+# Large datasets (enable if applicable)
+# ==============================
+# data/raw/
+# data/processed/
+
+# ==============================
+# Model artifacts
+# Review before committing large files
+# ==============================
+*.onnx
+*.engine
+*.pth
+*.ckpt
+# Keep training videos out of GitHub
+data/videos/training/*.mp4

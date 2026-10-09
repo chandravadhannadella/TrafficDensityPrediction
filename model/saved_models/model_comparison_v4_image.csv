@@ -1,0 +1,4 @@
+model_name,validation_accuracy,validation_macro_f1,test_accuracy,test_macro_f1,cv_accuracy,cv_macro_f1
+Logistic Regression,0.989247311827957,0.9883663610371686,0.9837837837837838,0.9826916024935827,0.9721289118575941,0.9703714140509155
+Random Forest,1.0,1.0,1.0,1.0,1.0,1.0
+Gradient Boosting,1.0,1.0,1.0,1.0,1.0,1.0
